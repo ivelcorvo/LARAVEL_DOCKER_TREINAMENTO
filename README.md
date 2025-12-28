@@ -180,34 +180,45 @@ docker compose exec app chmod -R 775 storage bootstrap/cache
 
 http://localhost:8080
 
-================================================================================================================
 
-depois clonar do github
 
-================================================================================================================
+## EXTRA) depois clonar do github
+
 
 🟩 ETAPA 1 — Criar o arquivo .env
 
-PowerShell:
+```
 copy backend\.env.example backend\.env
+```
 
 🟩 ETAPA 2 — Editar o .env
 
+```
 DB_CONNECTION=pgsql
 DB_HOST=db
 DB_PORT=5432
 DB_DATABASE=expert_appdb
 DB_USERNAME=LEVIappuser
 DB_PASSWORD=secret
+```
 
 🟩 ETAPA 3 — Subir Docker
+
+```
 docker compose up -d --build
+```
 
 🟩 ETAPA 4 — Instalar dependências
+```
 docker compose exec app composer install
+```
 
 🟩 ETAPA 5 — Gerar chave
+```
 docker compose exec app php artisan key:generate
+```
 
 🟩 ETAPA 6 — Migrar
+```
 docker compose exec app php artisan migrate
+```
